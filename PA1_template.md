@@ -3,14 +3,14 @@
 
 ## Loading and preprocessing the data
 
-1. Load data
+Load data
 
 
 ```r
 activityData <- read.csv("activity.csv")
 ```
 
-2. Transform date column from character to Date format
+Transform date column from character to Date format
 
 
 ```r
@@ -19,14 +19,14 @@ activityData$date <- as.Date(activityData$date,'%Y-%m-%d')
 
 ## What is mean total number of steps taken per day?
 
-1. Total steps taken per day
+Total steps taken per day
 
 
 ```r
 totalSteps <- tapply(activityData$steps,activityData$date,sum, na.rm=T)
 ```
 
-2. A Historgram showing Steps taken each day
+A Historgram showing Steps taken each day
 
 
 ```r
@@ -35,7 +35,7 @@ hist(totalSteps,xlab="Total Steps per day", main="Histogram of Steps per day")
 
 ![](PA1_template_files/figure-html/unnamed-chunk-4-1.png) 
 
-3. Mean & Median of the total number of steps taken per day
+Mean & Median of the total number of steps taken per day
 
 
 ```r
@@ -49,7 +49,7 @@ summary(totalSteps)
 
 ## What is the average daily activity pattern?
 
-1. A time series plot of the 5-minute interval and the average number of steps taken (averaged across all days) is shown below:
+A time series plot of the 5-minute interval and the average number of steps taken (averaged across all days) is shown below:
 
 
 ```r
@@ -59,7 +59,7 @@ plot(avg_day ~ unique(activityData$interval),type="l",xlab="Interval", ylab="Ave
 
 ![](PA1_template_files/figure-html/unnamed-chunk-6-1.png) 
 
-2. 5-minute interval, on average across all the days in the dataset that contains the maximum number of steps is:-
+5-minute interval, on average across all the days in the dataset that contains the maximum number of steps is:-
 
 
 ```r
@@ -73,7 +73,7 @@ avg_day[which.max(avg_day)]
 
 ## Imputing missing values
 
-1. Total number of missing values in dataset is:-
+Total number of missing values in dataset is:-
 
 
 ```r
@@ -94,7 +94,7 @@ summary(activityData)
 
 NA's are in the steps variables. There are 2304 steps.
 
-2. Fill the NAs with the average value for that 5-minute interval.
+Fill the NAs with the average value for that 5-minute interval.
 
 
 ```r
@@ -108,7 +108,7 @@ for (i in 1:nrow(activityData)){
 }
 ```
 
-3. Histogram of the total number of steps taken each day
+Histogram of the total number of steps taken each day
 
 
 ```r
